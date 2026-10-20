@@ -1,0 +1,12 @@
+.galerie{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 15px;
+   padding: 20px;
+}
+.galerie-bild{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
