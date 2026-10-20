@@ -19,7 +19,7 @@ function init(){
 function renderGalerie(){
     let htmlCode = "";
     for (let i = 0; i < carsImgs.length; i++) {
-        htmlCode += '<img class="galerie-bild" src="' + carsImgs[i] + '">';  
+        htmlCode += '<img class="galerie-bild" src="' + carsImgs[i] + '" onclick="openDialog(' + i + ')">';  
     }
     galerieRef.innerHTML = htmlCode;
 }
@@ -31,7 +31,7 @@ function renderDialog(){
 }
 
 function getHTMLDialog(){
-    return `<dialog id="fotoDialog">
+    return `<dialog id="fotoDialog" class="foto-dialog>
                 <header>
                     <h2></h2>
                     <button id="closeButton">
@@ -39,7 +39,7 @@ function getHTMLDialog(){
                     </button>
                 </header>
                 <section>
-                <img Id="dialogImg" src="" alt="Bild">
+                <img Id="dialogImg" class="dialog-img" src="" alt="Bild">
                 </section>
                 <footer>
                     <button id="arrowLeft">
@@ -51,4 +51,13 @@ function getHTMLDialog(){
                     </button>
                 </footer>
             </dialog>`;
+}
+
+function openDialog(index){
+    let dialogImgRef = document.getElementById('dialogImg');
+    dialogImgRef.src = carsImgs[index];
+
+    let dialogElement = document.getElementById('fotoDialog');
+
+    dialogElement.showModal();
 }
