@@ -7,46 +7,57 @@ let carsImgs = [
     "./assets/img/luxurycar11.png", "./assets/img/luxurycar12.png"
 ];
 
+const carsNames = [
+    "Lamborghini green", "Porsche magic bluelight",
+     "Lexus orange", "Porsche oldtimer", "Porsche modern",
+    "Lexus blue sport", "Lexus black sport", "Ford sport Gold edition", 
+    "Porsche caprio black", "Mercedes-Benz fast and furios", "Lamborghini sand magic",
+     "Porsche silver edition" ];
+
 let galerieRef = document.getElementById('galerie');
 let dialogPopUpRef = document.getElementById('dialogPopUp');
+let aktuellIndex = 0;
 
 function init(){
-    renderGalerie();
     renderDialog();
+    renderGalerie();
+    console.log(document.getElementById("title"));
+    
 
 }
 
 function renderGalerie(){
-    let htmlCode = "";
+    galerieRef.innerHTML = "";
     for (let i = 0; i < carsImgs.length; i++) {
-        htmlCode += '<img class="galerie-bild" src="' + carsImgs[i] + '" onclick="openDialog(' + i + ')">';  
+        galerieRef.innerHTML += `<img class="galerie-bild" src="${carsImgs[i]}" onclick="openDialog(${i})">`;  
     }
-    galerieRef.innerHTML = htmlCode;
+    
 }
 
 
 function renderDialog(){
     dialogPopUpRef.innerHTML = getHTMLDialog();
+    console.log(dialogPopUpRef.innerHTML);
 
 }
 
 function getHTMLDialog(){
-    return `<dialog id="fotoDialog" class="foto-dialog>
-                <header>
-                    <h2></h2>
-                    <button id="closeButton">
+    return `<dialog id="fotoDialog" class="foto-dialog">
+                <header class="header-dialog">
+                    <h2 id="title" class="title"></h2>
+                    <button id="closeButton" class="close" onclick="closeDialog()">
                         <img src="./assets/icon-button/close.png" alt="Schließen">
                     </button>
                 </header>
                 <section>
                 <img Id="dialogImg" class="dialog-img" src="" alt="Bild">
                 </section>
-                <footer>
-                    <button id="arrowLeft">
+                <footer class="footer">
+                    <button id="arrowLeft" class="arrow">
                         <img src="./assets/icon-button/Arrow-Left.png" alt="Zurück">
                     </button>
-                    <div></div>
-                    <button id="arrowRight">
+                    <p id="imgCounter" class="counter">1 / 12</p>
+                    <button id="arrowRight" class="arrow" onclick= "event.stopPropagation(); nextPicture(aktuellIndex);">
                         <img src="./assets/icon-button/Arrow-Right.png" alt="Vorwärts">
                     </button>
                 </footer>
@@ -55,9 +66,33 @@ function getHTMLDialog(){
 
 function openDialog(index){
     let dialogImgRef = document.getElementById('dialogImg');
-    dialogImgRef.src = carsImgs[index];
+    aktuellIndex = index;
 
     let dialogElement = document.getElementById('fotoDialog');
+    dialogImgRef.setAttribute("src", carsImgs[index]);
+
+    let titleElement = document.getElementById('title');
+    titleElement.textContent = carsNames[aktuellIndex];
 
     dialogElement.showModal();
+}
+
+function nextPicture(index){
+    aktuellIndex = index + 1;
+    if(aktuellIndex >= carsImgs.length){
+        aktuellIndex = 0;
+    }
+    let dialogImgRef = document.getElementById('dialogImg');
+    dialogImgRef.setAttribute("src", carsImgs[aktuellIndex]);
+
+    let imgCounterRef = document.getElementById('imgCounter');
+    imgCounterRef.textContent = `${aktuellIndex + 1}  /  ${carsImgs.length}`;
+
+     let titleElement = document.getElementById('title');
+    titleElement.textContent = carsNames[aktuellIndex];
+}
+
+function closeDialog(){
+    let dialogElement = document.getElementById('fotoDialog');
+    dialogElement.close();
 }
