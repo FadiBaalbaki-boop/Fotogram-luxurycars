@@ -29,7 +29,13 @@ function init(){
 function renderGalerie(){
     galerieRef.innerHTML = "";
     for (let i = 0; i < carsImgs.length; i++) {
-        galerieRef.innerHTML += `<img class="galerie-bild" src="${carsImgs[i]}" onclick="openDialog(${i})">`;  
+        galerieRef.innerHTML += `<button type="button" class="button-galerie"  onclick="openDialog(${i})">
+        <img
+        class="galerie-bild"
+        src="${carsImgs[i]}"
+        alt="${carsNames[i]}"
+        >
+        </button>`;  
     }
     
 }
@@ -41,34 +47,6 @@ function renderDialog(){
 
 }
 
-function getHTMLDialog(){
-    return `<dialog id="fotoDialog" class="foto-dialog"
-            role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
-                <header class="header-dialog">
-                    <h2 id="title" class="title"></h2>
-                    <button id="closeButton" class="close" 
-                    type="button" aria-label="Fotoansicht schließen" 
-                    onclick="closeDialog()">
-                        <img src="./assets/icon-button/close.png" alt="Schließen">
-                    </button>
-                </header>
-                <section class="img-section">
-                <img Id="dialogImg" class="dialog-img" src="" alt="Luxua-Fahrzeuge">
-                </section>
-                <footer class="footer">
-                    <button id="arrowLeft" class="arrow" 
-                    type="button" aria-label="Vorheriges Foto">
-                        <img src="./assets/icon-button/Arrow-Left.png" alt="Zurück">
-                    </button>
-                    <p id="imgCounter" class="counter" 
-                    aria-live="polite" aria-atomic="true">1 / 12</p>
-                    <button id="arrowRight" class="arrow" 
-                    type="button" aria-label="Nächstes Foto" onclick= "event.stopPropagation(); nextPicture(aktuellIndex);">
-                        <img src="./assets/icon-button/Arrow-Right.png" alt="Vorwärts">
-                    </button>
-                </footer>
-            </dialog>`;
-}
 
 function openDialog(index){
     let dialogImgRef = document.getElementById('dialogImg');
@@ -101,4 +79,33 @@ function nextPicture(index){
 function closeDialog(){
     let dialogElement = document.getElementById('fotoDialog');
     dialogElement.close();
+}
+
+function getHTMLDialog(){
+    return `<dialog id="fotoDialog" class="foto-dialog"
+            role="dialog" aria-modal="true" aria-labelledby="title">
+                <header class="header-dialog">
+                    <h2 id="title" class="title">${carsNames[aktuellIndex]}</h2>
+                    <button id="closeButton" class="close" 
+                    type="button" aria-label="Fotoansicht schließen" 
+                    onclick="closeDialog()">
+                        <img src="./assets/icon-button/Close.png" alt="Schließen">
+                    </button>
+                </header>
+                <section class="img-section">
+                <img Id="dialogImg" class="dialog-img" src="" alt="Luxua-Fahrzeuge">
+                </section>
+                <footer class="footer">
+                    <button id="arrowLeft" class="arrow" 
+                    type="button" aria-label="Vorheriges Foto">
+                        <img src="./assets/icon-button/Arrow-Left.png" alt="Zurück">
+                    </button>
+                    <p id="imgCounter" class="counter" 
+                    aria-live="polite" aria-atomic="true">1 / 12</p>
+                    <button id="arrowRight" class="arrow" 
+                    type="button" aria-label="Nächstes Foto" onclick= "event.stopPropagation(); nextPicture(aktuellIndex);">
+                        <img src="./assets/icon-button/Arrow-Right.png" alt="Vorwärts">
+                    </button>
+                </footer>
+            </dialog>`;
 }
