@@ -94,7 +94,7 @@ function getHTMLDialog(){
                 <section class="img-section">
                 <img Id="dialogImg" class="dialog-img" src="" alt="Luxua-Fahrzeuge">
                 </section>
-                <footer class="footer">
+                <footer class="footer-dialog">
                     <button id="arrowLeft" class="arrow" 
                     type="button" aria-label="Vorheriges Foto">
                         <img src="./assets/icon-button/Arrow-Left.png" alt="Zurück">

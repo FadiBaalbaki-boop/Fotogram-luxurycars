@@ -25,7 +25,7 @@ h1{
   color: white;
 }
 
-footer{
+.page-footer{
     height: 128px;
     display: flex;
     flex-direction: column;
@@ -80,7 +80,7 @@ footer{
 
 
 .header-dialog{
-    padding-inline: 120px;
+    padding-inline: 20px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -132,7 +132,7 @@ footer{
     filter: brightness(1.25);
 }
 
-.footer{
+.footer-dialog{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -159,7 +159,7 @@ footer{
     .photo-galerie{
         padding:  max(160px, calc(50% - 720px));
     }
-    footer{
+    .page-footer{
         padding: 20px max(160px, calc(50% - 720px));
     }
 }
@@ -172,7 +172,7 @@ footer{
     .photo-galerie{
         padding-inline: 80px;
     }
-    footer{
+    .page-footer{
         padding-inline: 80px;
     }
     .header-dialog{
@@ -185,7 +185,7 @@ footer{
         object-fit: cover;
 
     }
-    .footer{
+    .footer-dialog{
         padding-inline: 0px;
     }
     .title{
@@ -206,7 +206,7 @@ footer{
     background-color: #09212A; 
     border-radius: 40px;
     }
-    
+
     .foto-dialog::backdrop{
         background-color: #101116;
     } 
@@ -220,7 +220,7 @@ footer{
     .photo-galerie{
         padding-inline: 80px;
     }
-    footer{
+    .page-footer{
         padding-inline: 80px;
     }
     .header-dialog{
@@ -228,7 +228,7 @@ footer{
         display: flex;
         gap: 50px;
     }
-    .footer{
+    .footer-dialog{
         padding-inline: 0px; 
     }
     .counter{
@@ -279,7 +279,7 @@ footer{
     .photo-galerie{
         padding-inline: 30px;
     }
-    footer{
+    .page-footer{
         padding-inline: 30px;
     }
     .header-dialog{
@@ -287,7 +287,7 @@ footer{
         display: flex;
         gap: 50px;
     }
-    .footer{
+    .footer-dialog{
         padding-inline: 20px; 
         gap: 20px;
     }
@@ -360,7 +360,7 @@ footer{
         flex-direction: column-reverse;
         gap: 50px;
     }
-    .footer{
+    .footer-dialog{
         padding-inline: 0px; 
         gap: 30px;
     }
