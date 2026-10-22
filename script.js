@@ -21,7 +21,7 @@ let aktuellIndex = 0;
 function init(){
     renderDialog();
     renderGalerie();
-    console.log(document.getElementById("title"));
+    
     
 
 }
@@ -43,7 +43,6 @@ function renderGalerie(){
 
 function renderDialog(){
     dialogPopUpRef.innerHTML = getHTMLDialog();
-    console.log(dialogPopUpRef.innerHTML);
 
 }
 

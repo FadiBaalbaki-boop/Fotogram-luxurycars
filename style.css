@@ -2,7 +2,7 @@
     margin: 0;
     box-sizing: border-box;
 }
-/* HEADER SECTION FOOTER STYLE */
+/* HEADER SECTION FOOTER in index.html STYLE */
 header{
     background-color: #09212A;
     padding: 20px 160px;
@@ -16,6 +16,7 @@ header{
     gap: 80px;
     background-color: #06171E;
 }
+
 h1{
   font-family: "Figtree";
   font-style: normal;
@@ -38,10 +39,9 @@ footer{
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
-   gap: 15px;
-   /* padding: 20px; */
-   
+   gap: 15px;  
 }
+
 .galerie-bild{
     display: block;
     width: 150px;
@@ -73,10 +73,10 @@ footer{
 .foto-dialog[open]{
     display: flex;
 }
+
 .foto-dialog::backdrop{
         background-color: #101116;
     } 
-
 
 
 .header-dialog{
@@ -109,24 +109,29 @@ footer{
     width: 100%;
     object-fit: cover;
 }
+
 .button-galerie{
     border: 0;
     padding: 0;
     background: none;
     cursor: pointer;
 }
+
 .button-galerie img{
     transition: all 0.2s;
 }
+
 .button-galerie:focus-visible{
     outline: 3px solid white;
     outline-offset: 3px;
 }
+
 .button-galerie:hover img,
 .button-galerie:focus-visible img{
     transform: scale(1.01);
     filter: brightness(1.25);
 }
+
 .footer{
     width: 100%;
     display: flex;
@@ -135,14 +140,17 @@ footer{
     align-items: center;
     gap: 56px;
 }
+
 .arrow{
     border: none;
     background: transparent;
 }
+
 .counter{
     color: white;
 }
 
+/* Responsive */
 
  @media screen and (min-width: 1440px) {
      header{
@@ -198,6 +206,7 @@ footer{
     background-color: #09212A; 
     border-radius: 40px;
     }
+    
     .foto-dialog::backdrop{
         background-color: #101116;
     } 
