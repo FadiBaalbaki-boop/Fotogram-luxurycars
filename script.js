@@ -17,14 +17,16 @@ const carsNames = [
 let galerieRef = document.getElementById('galerie');
 let dialogPopUpRef = document.getElementById('dialogPopUp');
 let aktuellIndex = 0;
+let dialogImgRef;
+let dialogElementRef;
+let titleElementRef;
+let imgCounterRef;
 
 function init(){
     renderDialog();
     renderGalerie();
-    
-    
-
 }
+
 
 function renderGalerie(){
     galerieRef.innerHTML = "";
@@ -35,76 +37,65 @@ function renderGalerie(){
         src="${carsImgs[i]}"
         alt="${carsNames[i]}"
         >
-        </button>`;  
-    }
-    
+    </button>`;  
+    }   
 }
 
 
 function renderDialog(){
     dialogPopUpRef.innerHTML = getHTMLDialog();
 
+    dialogImgRef = document.getElementById('dialogImg');
+    dialogElementRef = document.getElementById('fotoDialog');
+    titleElementRef = document.getElementById('title');
+    imgCounterRef = document.getElementById('imgCounter');
 }
 
 
 function openDialog(index){
-    let dialogImgRef = document.getElementById('dialogImg');
     aktuellIndex = index;
 
-    let dialogElement = document.getElementById('fotoDialog');
     dialogImgRef.setAttribute("src", carsImgs[index]);
+    titleElementRef.textContent = carsNames[aktuellIndex];
+    imgCounterRef.textContent = `${aktuellIndex + 1} / ${carsImgs.length}`;
 
-    let titleElement = document.getElementById('title');
-    titleElement.textContent = carsNames[aktuellIndex];
-
-    dialogElement.showModal();
+    dialogElementRef.showModal();
 }
+
 
 function nextPicture(index){
     aktuellIndex = index + 1;
     if(aktuellIndex >= carsImgs.length){
         aktuellIndex = 0;
     }
-    let dialogImgRef = document.getElementById('dialogImg');
+
     dialogImgRef.setAttribute("src", carsImgs[aktuellIndex]);
-
-    let imgCounterRef = document.getElementById('imgCounter');
     imgCounterRef.textContent = `${aktuellIndex + 1}  /  ${carsImgs.length}`;
-
-     let titleElement = document.getElementById('title');
-    titleElement.textContent = carsNames[aktuellIndex];
+    titleElementRef.textContent = carsNames[aktuellIndex];
 }
+
+
+function backPicture(index){
+    aktuellIndex = index -1;
+
+    if(aktuellIndex < 0){
+        aktuellIndex = carsImgs.length - 1;
+    }
+
+    dialogImgRef.setAttribute("src", carsImgs[aktuellIndex]);
+    imgCounterRef.textContent = `${aktuellIndex + 1}  /  ${carsImgs.length}`;
+    titleElementRef.textContent = carsNames[aktuellIndex];
+}
+
 
 function closeDialog(){
-    let dialogElement = document.getElementById('fotoDialog');
-    dialogElement.close();
+    dialogElementRef.close();
 }
 
-function getHTMLDialog(){
-    return `<dialog id="fotoDialog" class="foto-dialog"
-            role="dialog" aria-modal="true" aria-labelledby="title">
-                <header class="header-dialog">
-                    <h2 id="title" class="title">${carsNames[aktuellIndex]}</h2>
-                    <button id="closeButton" class="close" 
-                    type="button" aria-label="Fotoansicht schließen" 
-                    onclick="closeDialog()">
-                        <img src="./assets/icon-button/Close.png" alt="Schließen">
-                    </button>
-                </header>
-                <section class="img-section">
-                <img Id="dialogImg" class="dialog-img" src="" alt="Luxua-Fahrzeuge">
-                </section>
-                <footer class="footer-dialog">
-                    <button id="arrowLeft" class="arrow" 
-                    type="button" aria-label="Vorheriges Foto">
-                        <img src="./assets/icon-button/Arrow-Left.png" alt="Zurück">
-                    </button>
-                    <p id="imgCounter" class="counter" 
-                    aria-live="polite" aria-atomic="true">1 / 12</p>
-                    <button id="arrowRight" class="arrow" 
-                    type="button" aria-label="Nächstes Foto" onclick= "event.stopPropagation(); nextPicture(aktuellIndex);">
-                        <img src="./assets/icon-button/Arrow-Right.png" alt="Vorwärts">
-                    </button>
-                </footer>
-            </dialog>`;
+
+function closeDialogOnBackground(event){
+    if (event.target.id === "fotoDialog"){
+        closeDialog();
+    }
 }
+
