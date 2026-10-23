@@ -3,10 +3,11 @@
     box-sizing: border-box;
 }
 body{
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    height: 100dvh;
 }
+
 /* HEADER Bereich index.html*/
 
 header{
@@ -24,7 +25,7 @@ header{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 80px;
+    gap: 40px;
     background-color: #06171E;
 }
 
@@ -219,7 +220,7 @@ h1{
     }
 
     .photo-galerie{
-        padding-inline: 80px;
+        padding-inline: 40px;
     }
 
     .page-footer{
@@ -264,18 +265,27 @@ h1{
     .foto-dialog::backdrop{
         background-color: #101116;
     } 
+    h1{
+        font-size: 45px;
+    }
 }
 
 
 /* responsive 768px - 1000px */
 
 @media screen and (min-width:768px) and (max-width: 999.9px){
+    /* body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+} */
+
     header{
         padding-inline: 80px;
     }
 
     .photo-galerie{
-        padding-inline: 80px;
+        padding-inline: 40px;
     }
 
     .page-footer{
@@ -342,6 +352,12 @@ h1{
 /* responsive 425px - 768px  */
 
 @media screen and (min-width:425px) and (max-width: 767.9px){
+    body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
      header{
         padding-inline: 30px;
     }
@@ -359,6 +375,10 @@ h1{
         display: flex;
         gap: 50px;
     }
+    .galerie-bild{
+        width: 100px;
+        height: 100px;
+    }
 
     .footer-dialog{
         padding-inline: 20px; 
@@ -375,7 +395,7 @@ h1{
     }
 
     h1{
-        font-size: 45px;
+        font-size: 35px;
         text-align: center;
     }
 
@@ -411,6 +431,11 @@ h1{
 /* responsive bis 425px */
 
 @media screen and (max-width: 424.5px) {
+    body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
     header{
         padding-inline: 20px;
     }
@@ -461,7 +486,7 @@ h1{
     }
 
     h1{
-        font-size: 45px;
+        font-size: 35px;
         text-align: center;
     }
 
@@ -472,10 +497,10 @@ h1{
         align-items: center;
         all: unset;
     } 
-    
+
     .galerie-bild{
-        width: 100px;
-        height: 100px;
+        width: 70px;
+        height: 70px;
     }     
     
 }
